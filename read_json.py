@@ -13,12 +13,18 @@ def read_file(file_path):
 
 
 def all_keys(file):
+    """
+    Return list with keys from dictionary
+    """
     key_list = []
     for key in file.keys():
         key_list.append(key)
     return key_list
 
 def main(file_path):
+    """
+    Return the value if you put the key down
+    """
     data = read_file(file_path)
     print(all_keys(data))
     while True:
@@ -36,4 +42,5 @@ def main(file_path):
             print(f'Value is: {data}')
             break
 
-main(r'C:\Users\Оленка\Music\twitter1.json')
+main()
+Дописати Keyerror
