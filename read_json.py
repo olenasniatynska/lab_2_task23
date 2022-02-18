@@ -1,30 +1,36 @@
 import json
+
+
 def read_file(file_path):
     """
     Return a file
     """
     with open(file_path, 'r', encoding = 'utf-8') as rea_file:
         data = json.load(rea_file)
-    if type(data) is list:
-        num = int(input("Please choose index of dictionary in list: "))
-        return data[num]
-    elif type(data) is dict:
-        return data
-
+    try:
+        if type(data) is list:
+            num = int(input(f"Please choose index of dictionary in list from 0 to {len(data)-1}: "))
+            if num>len(data)-1:
+                print("Wrong answer")
+                exit()
+            return data[int(num)]
+        elif type(data) is dict:
+            return data
+    except TypeError or AttributeError:
+        print("Wrong answer")
+        exit()
 
 def all_keys(file):
     """
-    Return list with keys from dictionary
+    Return all keys in given dictionary
     """
     key_list = []
     for key in file.keys():
         key_list.append(key)
     return key_list
 
+
 def main(file_path):
-    """
-    Return the value if you put the key down
-    """
     data = read_file(file_path)
     print(all_keys(data))
     while True:
@@ -43,4 +49,3 @@ def main(file_path):
             break
 
 main()
-Дописати Keyerror
